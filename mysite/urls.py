@@ -21,5 +21,5 @@ from cmdb import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^index/', views.index),
-    url(r'^interface/', views.interface),
+    url('', views.interface),
 ]
