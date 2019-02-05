@@ -17,9 +17,23 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from cmdb import views
+from . import settings  # 为静态文件添加的
+from django.conf.urls.static import static  # 为静态文件添加的
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^index/', views.index),
     url('', views.interface),
-]
+]  # + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)  # 为静态文件添加的
+
+if settings.DEBUG:
+    pass
+else:
+    from django.views.static import serve
+    from mysite.settings import STATIC_ROOT
+    # urlpatterns.append(url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS}))
+
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    from django.contrib import staticfiles
+    urlpatterns += staticfiles_urlpatterns()
