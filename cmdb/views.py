@@ -38,7 +38,13 @@ def wxBondLogin(x, y, z):
         'errorcode': "success",
         'x': x
     }
-    return HttpResponse(json.dumps(resp), content_type="application/json")
+    models.bond_userinfo.objects.create(  # 数据库插入语句
+        # mID=username,   # 设定字段与传入值进行对应（将会什么内容将会保存在什么字段下。）。
+        mNAME=x,
+        mPASSWORD=y,
+    )
+    user_list = models.bond_userinfo.objects.all()
+    return HttpResponse(json.dumps(user_list), content_type="application/json")
 
 
 def wxBondGetTargetsn(x, y, z):
