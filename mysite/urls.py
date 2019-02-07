@@ -24,6 +24,7 @@ from django.conf.urls.static import static  # 为静态文件添加的
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^index/', views.index),
+    url(r'^dbTable/', views.dbTable),
     url('', views.interface),
 ]  # + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)  # 为静态文件添加的
 
