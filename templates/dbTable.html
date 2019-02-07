@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Arjen Club db</title>
+
+        <style>
+            span.highlighted {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/index/" method="POST">
+            <lable>姓名</lable><input type="text" name="tname">
+            <lable>密码</lable><input type="text" name="tpassword">
+            <input type="submit" value="提交">
+        </form>
+        <table border="1px">
+            <tr>
+                <td>姓名</td>
+                <td>密码</td>
+            </tr>
+            {% for i in user_list %}
+                <tr>
+                    <td>{{ i.mNAME }}</td>
+                    <td>{{ i.mPASSWORD }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

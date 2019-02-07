@@ -2,7 +2,15 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from cmdb import models   # 引入数据库模型
 import json
+from django.core import serializers
+from django.http import JsonResponse
 # Create your views here.
+
+
+def toolModelsToJson(pmodels):
+    json_data = serializers.serialize('json', pmodels)
+    json_data = json.loads(json_data)
+    return JsonResponse(json_data, safe=False)
 
 
 def index(request):
@@ -22,6 +30,10 @@ def index(request):
 
 def interface(request):
     if request.GET.get("interface", None) is None:
+        '''
+        user_list = models.bond_userinfo.objects.all()  # 将数据全部展示至html中。
+        return render(request, "dbtable.html", {"user_list": user_list})
+        '''
         return render(request, "index.html")
 
     operator = {
@@ -38,13 +50,16 @@ def wxBondLogin(x, y, z):
         'errorcode': "success",
         'x': x
     }
+    '''
     models.bond_userinfo.objects.create(  # 数据库插入语句
         # mID=username,   # 设定字段与传入值进行对应（将会什么内容将会保存在什么字段下。）。
         mNAME=x,
         mPASSWORD=y,
     )
+    '''
     user_list = models.bond_userinfo.objects.all()
-    return HttpResponse(json.dumps(user_list), content_type="application/json")
+    return toolModelsToJson(user_list)
+    # return HttpResponse(json.dumps(user_list), content_type="application/json")
 
 
 def wxBondGetTargetsn(x, y, z):
