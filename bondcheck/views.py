@@ -1,5 +1,6 @@
 from django.shortcuts import HttpResponse
 from toollib import tools
+from django.http import JsonResponse
 import requests
 
 
@@ -19,7 +20,7 @@ def login(request):
     js_code = request.GET.get("code", None)
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     t_data = {'appid': appid, 'secret': secret, 'js_code': js_code, 'grant_type': 'authorization_code'}
-    response = requests.post(url, data=t_data)
+    # response = requests.post(url, data=t_data)
     # return HttpResponse(tools.strToJson(response.text), content_type="application/json")
-    return HttpResponse(response.text)
+    return JsonResponse(t_data)
 
