@@ -22,9 +22,10 @@ def login(request):
     appid = 'wx1e6498038c6f6694'
     secret = '880ed1088abe49a31adcb3ec4d402c61'
     js_code = request.GET.get("code", None)
-    url = 'https://api.weixin.qq.com/sns/jscode2session?'
-    url += 'appid=' + appid + '&secret=' + secret + '&js_code=' + js_code +'&grant_type=authorization_code'
-    response = requests.post(url)
+    url = 'https://api.weixin.qq.com/sns/jscode2session'
+    # url += 'appid=' + appid + '&secret=' + secret + '&js_code=' + js_code +'&grant_type=authorization_code'
+    t_data = {'appid': appid, 'secret': secret, 'js_code': js_code, 'grant_type': 'authorization_code'}
+    response = requests.post(url, data=t_data)
     # return response
     return HttpResponse(url)
 
