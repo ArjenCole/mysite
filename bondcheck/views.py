@@ -13,6 +13,7 @@ def test(request):
     resp = {'errorcode': 100, 'detail': 'test'}
     return HttpResponse(tools.dicTojson(resp), content_type="application/json")
 
+
 def login(request):
     '''
     resp = {'errorcode': 100, 'detail': 'login'}
