@@ -20,5 +20,6 @@ def login(request):
     url = 'https://api.weixin.qq.com/sns/jscode2session'
     t_data = {'appid': appid, 'secret': secret, 'js_code': js_code, 'grant_type': 'authorization_code'}
     response = requests.post(url, data=t_data)
-    return HttpResponse(tools.strToJson(response.text), content_type="application/json")
+    # return HttpResponse(tools.strToJson(response.text), content_type="application/json")
+    return HttpResponse(response.text)
 
