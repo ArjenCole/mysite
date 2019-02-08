@@ -14,7 +14,8 @@
         </style>
     </head>
     <body>
-        <form action="/index/" method="POST">
+        <form action="/dbTable/" method="POST">
+            {% csrf_token %}
             <lable>姓名</lable><input type="text" name="tname">
             <lable>密码</lable><input type="text" name="tpassword">
             <input type="submit" value="提交">
