@@ -2,7 +2,11 @@ from django.core import serializers
 import json
 
 
-def dicTojson(dic):
+def strToJson(string):
+    return json.loads(string)
+
+
+def dicToJson(dic):
     return json.dumps(dic)
 
 
