@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
 from cmdb import models   # 引入数据库模型
 from cmdb import tools
 # Create your views here.
@@ -31,11 +30,6 @@ def dbTable(request):
         )
     user_list = models.bond_userinfo.objects.all()     # 将数据全部展示至html中。
     return render(request, "dbTable.html", {"user_list": user_list})
-
-
-def wxBond(request):
-    resp = {'errorcode': 100, 'detail': 'Get success'}
-    return HttpResponse(tools.dicTojson(resp), content_type="application/json")
 
 
 def interface(request):
