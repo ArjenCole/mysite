@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 # from django.urls import path
 from django.conf.urls import url, include
+from bondcheck import views
 from cmdb import views
 from . import settings  # 为静态文件添加的
 from django.conf.urls.static import static  # 为静态文件添加的
@@ -25,7 +26,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^index/', views.index),
     url(r'^dbTable/', views.dbTable),
-    url(r'^wxBond', include('cmdb.urls')),
+    url(r'^wxBond', include('bondcheck.urls')),
     url('', views.interface),
 ]  # + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)  # 为静态文件添加的
 

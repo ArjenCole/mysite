@@ -1,6 +1,5 @@
 from django.shortcuts import HttpResponse
-from cmdb import models   # 引入数据库模型
-from cmdb import tools
+from toollib import tools
 
 
 def wxBond(request):

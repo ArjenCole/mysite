@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from cmdb import models   # 引入数据库模型
-from cmdb import tools
+from django.http import JsonResponse
+from toollib import tools
+
+
 # Create your views here.
 
 
@@ -62,7 +65,7 @@ def wxBondLogin(x, y, z):
     )
     '''
     user_list = models.bond_userinfo.objects.all()
-    return tools.modelsToJson(user_list)
+    return JsonResponse(tools.modelsToJson(user_list), safe=False)
 
 
 def wxBondGetTargets(x, y, z):
