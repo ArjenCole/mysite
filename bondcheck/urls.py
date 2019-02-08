@@ -8,6 +8,7 @@ from bondcheck import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^/login', views.login),
+    url(r'^/test', views.test),
     # 定义默认访问路由，表示输入任意url路径
     url(r'^$', views.wxBond),
 ]
