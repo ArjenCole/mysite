@@ -33,6 +33,11 @@ def dbTable(request):
     return render(request, "dbTable.html", {"user_list": user_list})
 
 
+def wxBond(request):
+    resp = {'errorcode': 100, 'detail': 'Get success'}
+    return HttpResponse(tools.dicTojson(resp), content_type="application/json")
+
+
 def interface(request):
     if request.GET.get("interface", None) is None:
         '''

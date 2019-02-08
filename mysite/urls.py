@@ -25,6 +25,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^index/', views.index),
     url(r'^dbTable/', views.dbTable),
+    url(r'^wxBond', views.wxBond),
     url('', views.interface),
 ]  # + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)  # 为静态文件添加的
 
